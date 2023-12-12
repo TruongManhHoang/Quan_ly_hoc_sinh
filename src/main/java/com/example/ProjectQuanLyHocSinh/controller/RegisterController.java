@@ -31,33 +31,40 @@ public class RegisterController {
         model.addAttribute("registerUser",registerUser);
         return "register/form";
     }
-    @PostMapping("/process")
-    public String process(@Valid @ModelAttribute RegisterUser registerUser,
-                          Model model, BindingResult result, HttpSession session){
-        String username = registerUser.getUsername();
-        // check form validation
-        if(result.hasErrors()){
-            return "register/form";
-        }
-        // kiem tra user da ton tai
-        List<Users> users = userService.findByUserName(username);
-        if(users != null){
-            model.addAttribute("registerUser",new RegisterUser());
-            model.addAttribute("error","Tài khoản đã tồn tại");
-            return "register/form";
-        }
-        // Nếu chưa tồn tại thì lưu
-        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        Users users1 = new Users();
-        users1.setUsername(registerUser.getUsername());
-        users1.setPassword(bcrypt.encode(registerUser.getPassword()));
-        users1.setFirstName(registerUser.getFirstName());
-        users1.setLastName(registerUser.getLastName());
-        users1.setEmail(registerUser.getEmail());
-        userService.save(users1);
-
-        // Thông báo thành công
-        session.setAttribute("myuser",users1);
-        return "register/confirmation";
-    }
+//    @GetMapping("/hello")
+//    public String hello(Model model){
+////        RegisterUser registerUser = new RegisterUser();
+////        model.addAttribute("registerUser",registerUser);
+//        return "hello";
+//    }
+//    @PostMapping("/process")
+//    public String process(@Valid @ModelAttribute RegisterUser registerUser,
+//                          Model model, BindingResult result, HttpSession session) {
+//        String username = registerUser.getUsername();
+//        // check form validation
+//        if (result.hasErrors()) {
+//            return "register/form";
+//        }
+//         //kiem tra user da ton tai
+//        List<Users> userExisting = userService.findByUserName(username);
+//        if(userExisting != null){
+//            model.addAttribute("registerUser",new RegisterUser());
+//            model.addAttribute("my_error","Tài khoản đã tồn tại");
+//            return "register/form";
+//        }
+//
+//         //Nếu chưa tồn tại thì lưu
+//        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+//        Users users1 = new Users();
+//        users1.setUsername(registerUser.getUsername());
+//        users1.setPassword(bcrypt.encode(registerUser.getPassword()));
+//        users1.setFirstName(registerUser.getFirstName());
+//        users1.setLastName(registerUser.getLastName());
+//        users1.setEmail(registerUser.getEmail());
+//        userService.save(users1);
+//
+//        // Thông báo thành công
+//        session.setAttribute("myuser",users1);
+//        return "register/confirmation";
+//    }
 }

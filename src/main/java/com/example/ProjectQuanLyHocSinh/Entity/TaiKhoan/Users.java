@@ -1,135 +1,101 @@
 package com.example.ProjectQuanLyHocSinh.Entity.TaiKhoan;
 
+import com.example.ProjectQuanLyHocSinh.Entity.TaiKhoan.Role;
 import jakarta.persistence.*;
 
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
 public class Users {
     @Id
-    @Column(name = "username", length = 50)
-    private String username;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "username")
+    private String userName;
     @Column(name = "password", length = 256)
-    private String password;
-
-    @Column(name = "firstname", length = 50)
+    private String passWord;
+    @Column(name = "enable" )
+    private boolean enable;
+    @Column(name = "firstName")
     private String firstName;
-
-    @Column(name = "lastname", length = 50)
+    @Column(name = "lastName")
     private String lastName;
-
-    @Column(name = "enabled", length = 50)
-    private String enabled;
-
-    @Column(name = "gioi_tinh", length = 50)
-    private String gioiTinh;
-
-    @Column(name = "ngay_sinh")
-    private Date ngaySinh;
-
-    @Column(name = "dia_chi", length = 50)
-    private String diaChi;
-
-    @Column(name = "email", length = 50)
+    @Column(name = "email")
     private String email;
-
-    @Column(name = "chuc_vu", length = 50)
-    private String chucVu;
-
-    @Column(name = "avatar")
     @Lob
+    @Column(name = "avatar")
     private Blob avatar;
 
-
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Collection<Role> roles;
     public Users() {
     }
 
-    public Users(String username, String password, String firstName, String lastName, String enabled, String gioiTinh, Date ngaySinh, String diaChi, String email, String chucVu, Blob avatar) {
-        this.username = username;
-        this.password = password;
+    public Users(String userName, String passWord, boolean enable, String firstName, String lastName, String email, Blob avatar, Collection<Role> roles) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.enable = enable;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.enabled = enabled;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
         this.email = email;
-        this.chucVu = chucVu;
+        this.avatar = avatar;
+        this.roles = roles;
+    }
+
+    public Users(String userName, String passWord, boolean enable, String firstName, String lastName, String email, Blob avatar) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.enable = enable;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
         this.avatar = avatar;
     }
 
-    public String getUsername() {
-        return username;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
-    public String getPassword() {
-        return password;
+    public Long getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getEnabled() {
-        return enabled;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setEnabled(String enabled) {
-        this.enabled = enabled;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
-    public Date getNgaySinh() {
-        return ngaySinh;
+    public boolean isEnable() {
+        return enable;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getChucVu() {
-        return chucVu;
-    }
-
-    public void setChucVu(String chucVu) {
-        this.chucVu = chucVu;
-    }
-
-    public Blob getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(Blob avatar) {
-        this.avatar = avatar;
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 
     public String getFirstName() {
@@ -148,20 +114,34 @@ public class Users {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Blob getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Blob avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
-        return "Users{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", enable=" + enable +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", enabled='" + enabled + '\'' +
-                ", gioiTinh='" + gioiTinh + '\'' +
-                ", ngaySinh=" + ngaySinh +
-                ", diaChi='" + diaChi + '\'' +
                 ", email='" + email + '\'' +
-                ", chucVu='" + chucVu + '\'' +
                 ", avatar=" + avatar +
+                ", roles=" + roles +
                 '}';
     }
 }

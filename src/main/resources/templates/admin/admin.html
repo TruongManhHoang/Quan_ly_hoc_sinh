@@ -22,6 +22,12 @@
             </form>
         </div>
     </div>
+    <button sec:authorize="hasAnyRole('ADMIN', 'MANAGER', 'TEACHER')" class="btn btn-success" >Xem</button>
+    <button sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"   class="btn btn-warning" >Chỉnh sửa</button>
+    <button sec:authorize="hasRole('ADMIN')"  class="btn btn-danger" >Xóa</button>
+    <div sec:authorize="hasRole('ADMIN')" >
+        NỘI DUNG
+    </div>
 </div>
 </body>
 </html>
