@@ -16,8 +16,8 @@
             Xin chào các bạn
         </div>
         <div class = "col-sm-6">
-            Xin chào <span sec:authentication="principal.username"></span><b/>
-                        <span sec:authentication="principal.authorities"></span>
+            Xin chào <b><span sec:authentication="principal.username"></span></b>,
+            <span sec:authentication="principal.authorities"></span>
             <form action="#" th:action="@{/logout}" method="post">
                 <input type="submit" value="Đăng xuất">
             </form>

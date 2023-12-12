@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
-//    public void save(Users users);
+    public void save(Users users);
 //
 //    public Users update(Users users);
 //
