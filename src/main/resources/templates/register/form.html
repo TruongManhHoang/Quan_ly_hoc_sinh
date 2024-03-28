@@ -29,7 +29,7 @@
             </div>
         </div>
         <div>
-            <input type="text" th:field="*{password}" placeholder="Password (*)" class="form-control"/>
+            <input type="password" th:field="*{password}" placeholder="Password (*)" class="form-control"/>
             <div th:if="${#fields.hasErrors('password')}">
                 <ul>
                     <li th:each="e: ${#fields.errors('password')}" th:text="${e}"></li>

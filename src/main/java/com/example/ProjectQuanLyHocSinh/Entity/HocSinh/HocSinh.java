@@ -5,6 +5,8 @@ import com.example.ProjectQuanLyHocSinh.Entity.Lop.Lop;
 import com.example.ProjectQuanLyHocSinh.Entity.PhuHuynh.PhuHuynh;
 import jakarta.persistence.*;
 
+import java.sql.Blob;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,7 +24,11 @@ public class HocSinh {
 
     @Column(name = "email", length = 50)
     private String email;
-
+    @Column(name = "createAt")
+    private Date createDate;
+    @Lob
+    @Column(name = "avatar", length = 64)
+    private Blob avatar;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hoc_sinh_detail_id")
     private HocSinhDetail hocSinhDetail;
@@ -63,6 +69,35 @@ public class HocSinh {
         this.lops = lops;
         this.bangDiems = bangDiems;
         this.phuHuynh = phuHuynh;
+    }
+
+    public HocSinh(Integer id, String ten, String hoVaDem, String email, Date createDate, Blob avatar, HocSinhDetail hocSinhDetail, List<Lop> lops, List<BangDiem> bangDiems, PhuHuynh phuHuynh) {
+        this.id = id;
+        this.ten = ten;
+        this.hoVaDem = hoVaDem;
+        this.email = email;
+        this.createDate = createDate;
+        this.avatar = avatar;
+        this.hocSinhDetail = hocSinhDetail;
+        this.lops = lops;
+        this.bangDiems = bangDiems;
+        this.phuHuynh = phuHuynh;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Blob getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Blob avatar) {
+        this.avatar = avatar;
     }
 
     public Integer getId() {
@@ -136,6 +171,8 @@ public class HocSinh {
                 ", ten='" + ten + '\'' +
                 ", hoVaDem='" + hoVaDem + '\'' +
                 ", email='" + email + '\'' +
+                ", createDate=" + createDate +
+                ", avatar=" + avatar +
                 ", hocSinhDetail=" + hocSinhDetail +
                 ", lops=" + lops +
                 ", bangDiems=" + bangDiems +
