@@ -10,12 +10,13 @@ public class HocSinhDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    @Column(name = "ten", length = 20)
+    private String ten;
     @Column(name = "sdt", length = 50)
     private String sdt;
 
     @Column(name = "gioi_Tinh")
-    private Boolean gioiTinh;
+    private String gioiTinh;
 
     @Column(name = "ngay_sinh")
     private Date ngaySinh;
@@ -39,7 +40,9 @@ public class HocSinhDetail {
     public HocSinhDetail() {
     }
 
-    public HocSinhDetail(String sdt, Boolean gioiTinh, Date ngaySinh, String diaChi, String soThich, String facebook, Blob avatar, HocSinh hocSinh) {
+    public HocSinhDetail(Integer id, String ten, String sdt, String gioiTinh, Date ngaySinh, String diaChi, String soThich, String facebook, Blob avatar, HocSinh hocSinh) {
+        this.id = id;
+        this.ten = ten;
         this.sdt = sdt;
         this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
@@ -48,6 +51,14 @@ public class HocSinhDetail {
         this.facebook = facebook;
         this.avatar = avatar;
         this.hocSinh = hocSinh;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public Integer getId() {
@@ -66,11 +77,11 @@ public class HocSinhDetail {
         this.sdt = sdt;
     }
 
-    public Boolean getGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(Boolean gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -126,6 +137,7 @@ public class HocSinhDetail {
     public String toString() {
         return "HocSinhDetail{" +
                 "id=" + id +
+                ", ten='" + ten + '\'' +
                 ", sdt='" + sdt + '\'' +
                 ", gioiTinh=" + gioiTinh +
                 ", ngaySinh=" + ngaySinh +

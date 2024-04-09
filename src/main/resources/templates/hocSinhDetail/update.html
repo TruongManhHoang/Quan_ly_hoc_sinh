@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa người dùng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('#form').onsubmit = function() {
+                    alert("Chúc mừng bạn đã thêm học sinh thành công!");
+                };
+            });
+    </script>
+</head>
+<body>
+<div class="container">
+    <h3>Quản lý sinh viên</h3>
+    <hr/>
+    <h2>Update Hoc Sinh</h2>
+    <form action="#" th:action="@{/hocSinhDetail/saveHocSinhDetail}" th:object="${hocSinhDetail}" method="post" id = "form">
+        <input readonly th:value="${hocSinhDetail.id}" class="form-control-plaintext">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label>Họ và tên: </label>
+            <input type="text" th:field="*{ten}" class="form-control" placeholder="Nhap ten">
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại: </label>
+            <input type="number" th:field="*{sdt}" class="form-control" placeholder="Nhập số điện thoại">
+        </div>
+        <div class="form-group">
+            <label>Giới tinh: </label>
+            <input type="text" th:field="*{gioiTinh}" class="form-control" placeholder="Nhập giới tính">
+        </div>
+        <div class="form-group">
+            <label>Địa chỉ: </label>
+            <input type="text" th:field="*{diaChi}" class="form-control" placeholder="Nhập địa chỉ">
+        </div>
+        <div class="form-group">
+            <label>Sở thích: </label>
+            <input type="text" th:field="*{soThich}" class="form-control" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label>Facebook: </label>
+            <input type="text" th:field="*{facebook}" class="form-control" placeholder="Nhập địa chỉ facebook">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success col-2">Lưu</button>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

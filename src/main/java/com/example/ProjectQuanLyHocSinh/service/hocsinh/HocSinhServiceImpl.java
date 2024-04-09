@@ -30,16 +30,6 @@ public class HocSinhServiceImpl implements HocSinhService {
         return hocSinhRepository.saveAndFlush(hocSinh);
     }
 
-//    @Transactional
-//    @Override
-//    public HocSinh update(HocSinh hocSinh Integer id) {
-//        HocSinh hocSinh1 = hocSinhRepository.findById(hocSinh.getId());
-//        hocSinh1.setTen(hocSinh.getTen());
-//        hocSinh1.setHoVaDem(hocSinh.getHoVaDem());
-//        hocSinh1.setEmail(hocSinh.getEmail());
-//        return hocSinhRepository.save(hocSinh1);
-//    }
-
     @Override
     public HocSinh findById(Integer id) {
         Optional<HocSinh> optional = hocSinhRepository.findById(id);

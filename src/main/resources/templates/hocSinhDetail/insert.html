@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Thêm người dùng</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<!--    <script>-->
-<!--        document.addEventListener('DOMContentLoaded', function() {-->
-<!--        document.addEventListener('DOMContentLoaded', function() {-->
-<!--                document.querySelector('#form').onsubmit = function() {-->
-<!--                    alert("Chúc mừng bạn đã cập nhật học sinh thành công!");-->
-<!--                };-->
-<!--            });-->
-<!--    </script>-->
+    <!--    <script>-->
+    <!--        document.addEventListener('DOMContentLoaded', function() {-->
+    <!--        document.addEventListener('DOMContentLoaded', function() {-->
+    <!--                document.querySelector('#form').onsubmit = function() {-->
+    <!--                    alert("Chúc mừng bạn đã cập nhật học sinh thành công!");-->
+    <!--                };-->
+    <!--            });-->
+    <!--    </script>-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('#submit').disabled = true;
@@ -113,15 +113,42 @@
     </nav>
 </header>
 <div class="container">
-<h3>Quản lý sinh viên</h3>
+    <h3>Quản lý sinh viên</h3>
     <hr/>
-    <form action="#" th:action="@{/hocSinh/save}" th:object="${hocsinh}" method="post" id = "form" enctype="multipart/form-data">
-        <input type="text" th:field="*{ten}" placeholder="Nhập tên" class="form-control w-25 mb-4" id="ten">
-        <input type="text" th:field="*{hoVaDem}" placeholder="Nhập họ và đệm" class="form-control w-25 mb-4" id="hoVaDem">
-        <input type="text" th:field="*{email}" placeholder="Nhập email" class="form-control w-25 mb-4" id="email">
-<!--        <input type="file" th:field="*{avatar}" name="img" placeholder="Nhập link avatar" class="form-control w-25 mb-4" accept="image/png, image/jpg" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required="required">-->
-        <input type="checkbox" id="check"> Bạn đồng ý thêm sinh viên<br/>
-        <button type="submit" id="submit" class="btn btn-success col-2">Lưu</button>
+    <form action="#" th:action="@{/hocSinhDetail/saveHocSinhDetail}" th:object="${hocSinhDetail}" method="post" id = "form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Họ và tên: </label>
+            <input type="text" th:field="*{ten}" class="form-control" placeholder="Nhap ten">
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại: </label>
+            <input type="number" th:field="*{sdt}" class="form-control" placeholder="Nhập số điện thoại">
+        </div>
+        <div class="form-group">
+            <label>Giới tinh: </label>
+            <input type="text" th:field="*{gioiTinh}" class="form-control" placeholder="Nhập giới tính">
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label>Ngày sinh: </label>-->
+<!--            <input type="date" th:field="*{ngaySinh}" class="form-control" placeholder="Nhập ngày sinh">-->
+<!--        </div>-->
+        <div class="form-group">
+            <label>Địa chỉ: </label>
+            <input type="text" th:field="*{diaChi}" class="form-control" placeholder="Nhập địa chỉ">
+        </div>
+        <div class="form-group">
+            <label>Sở thích: </label>
+            <input type="text" th:field="*{soThich}" class="form-control" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label>Facebook: </label>
+            <input type="text" th:field="*{facebook}" class="form-control" placeholder="Nhập địa chỉ facebook">
+        </div>
+<!--        <div class="form-group form-check">-->
+<!--            <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--            <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--        </div>-->
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
