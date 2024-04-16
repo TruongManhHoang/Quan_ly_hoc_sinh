@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa giáo viên</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('#form').onsubmit = function() {
+                    alert("Chúc mừng bạn đã thêm học sinh thành công!");
+                };
+            });
+    </script>
+</head>
+<body>
+<div class="container">
+    <h3>Sửa giáo viên</h3>
+    <hr/>
+    <h2>Update Hoc Sinh</h2>
+    <form action="#" th:action="@{/giaoVien/saveGiaoVien}" th:object="${giaoVien}" method="post" id = "form">
+        <input readonly th:value="${giaoVien.id}" class="form-control-plaintext">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label>Tên: </label>
+            <input type="text" th:field="*{ten}" class="form-control" placeholder="Nhap ten">
+        </div>
+        <div class="form-group">
+            <label>Họ và đệm: </label>
+            <input type="text" th:field="*{hoVaTenDem}" class="form-control" placeholder="Nhập học và tên đệm">
+        </div>
+        <div class="form-group">
+            <label>Email: </label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="Nhập email">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success col-2">Lưu</button>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

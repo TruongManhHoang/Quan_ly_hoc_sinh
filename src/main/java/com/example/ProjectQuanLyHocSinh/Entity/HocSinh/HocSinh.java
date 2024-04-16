@@ -28,7 +28,7 @@ public class HocSinh {
     private Date createDate;
     @Lob
     @Column(name = "avatar", length = 64)
-    private Blob avatar;
+    private String avatar;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hoc_sinh_detail_id")
     private HocSinhDetail hocSinhDetail;
@@ -71,7 +71,7 @@ public class HocSinh {
         this.phuHuynh = phuHuynh;
     }
 
-    public HocSinh(Integer id, String ten, String hoVaDem, String email, Date createDate, Blob avatar, HocSinhDetail hocSinhDetail, List<Lop> lops, List<BangDiem> bangDiems, PhuHuynh phuHuynh) {
+    public HocSinh(Integer id, String ten, String hoVaDem, String email, Date createDate, String avatar, HocSinhDetail hocSinhDetail, List<Lop> lops, List<BangDiem> bangDiems, PhuHuynh phuHuynh) {
         this.id = id;
         this.ten = ten;
         this.hoVaDem = hoVaDem;
@@ -92,11 +92,11 @@ public class HocSinh {
         this.createDate = createDate;
     }
 
-    public Blob getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Blob avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 

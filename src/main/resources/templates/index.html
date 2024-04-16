@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý nhân sự</title>
-    <title>Quản lý nhân sự</title>
+    <link rel="stylesheet" href="css.css">
     <style>
         /* CSS giữ nguyên */
         body {
@@ -62,9 +62,6 @@
             width: 100%;
             height: 50%
         }
-        th {
-            height: 15%
-        }
         table, th, td{
             border:1px solid #868585;
         }
@@ -93,44 +90,35 @@
         </ul>
     </div>
     <div class="right-panel">
-        <a th:href="@{/hocSinh/create}">Thêm mới</a>
-        <table>
-            <caption>Danh sách học sinh</caption>
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Ten
-                </th>
-                <th>
-                    Ho va dem
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Avatar
-                </th>
-                <th>Xử lý</th>
-            </tr>
-            <tr th:each="hocsinhs : ${hocsinh}">
-                <td th:text="${hocsinhs.id}"></td>
-                <td th:text="${hocsinhs.ten}"></td>
-                <td th:text="${hocsinhs.hoVaDem}"></td>
-                <td th:text="${hocsinhs.email}"></td>
-                <td th:text="${hocsinhs.avatar}"></td>
-                <td>
-
-                    <a th:href ="@{/hocSinh/update/{id}(id=${hocsinhs.id})}" class="btn btn-info btn-sm">Chỉnh sửa</a>
-                    <a th:href ="@{/hocSinh/delete/{id}(id=${hocsinhs.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn xoá sinh viên này không?');">Xoá</a>
-                </td>
-
-
-            </tr>
-        </table>
+        <h1>Xin chào</h1>
     </div>
 </div>
 
+<!--<script>-->
+<!--    // Lấy tất cả các liên kết trong thanh bên trái-->
+<!--    const links = document.querySelectorAll('.nav a');-->
+
+<!--    // Hàm xử lý sự kiện click trên liên kết-->
+<!--    function handleLinkClick(event) {-->
+<!--        event.preventDefault(); // Ngăn chặn điều hướng mặc định-->
+
+<!--        // Lấy URL của trang cần tải-->
+<!--        const url = event.currentTarget.getAttribute('data-url');-->
+
+<!--        // Sử dụng AJAX để tải nội dung trang mới-->
+<!--        fetch(url)-->
+<!--            .then(response => response.text())-->
+<!--            .then(html => {-->
+<!--                // Thay đổi nội dung của phần chính với nội dung mới-->
+<!--                document.getElementById('Content2').innerHTML = html;-->
+<!--            });-->
+<!--    }-->
+
+<!--    // Thêm sự kiện click vào tất cả các liên kết trong thanh bên trái-->
+<!--    links.forEach(link => {-->
+<!--        link.addEventListener('click', handleLinkClick);-->
+<!--    });-->
+
+<!--</script>-->
 </body>
 </html>

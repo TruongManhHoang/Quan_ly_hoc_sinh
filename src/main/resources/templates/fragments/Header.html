@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header đơn giản</title>
+    <style>
+        /* CSS cho header */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav li {
+            margin-right: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo">Logo</div>
+    <nav>
+        <ul class="nav">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Dịch vụ</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <div class="search-box">
+        <input type="text" placeholder="Tìm kiếm...">
+        <button>Tìm</button>
+    </div>
+</header>
+</body>
+
+</html>

@@ -92,10 +92,10 @@
             <li><a href="/lopHoc/list" data-url="/lopHoc/list">Lớp học</a></li>
         </ul>
     </div>
-    <div class="right-panel">
-        <a th:href="@{/hocSinh/create}">Thêm mới</a>
+    <div class="right-panel" id = "Content2">
+        <a th:href="@{/giaoVien/create}">Thêm mới</a>
         <table>
-            <caption>Danh sách học sinh</caption>
+            <caption>Danh sách giáo viên</caption>
             <tr>
                 <th>
                     ID
@@ -104,30 +104,24 @@
                     Ten
                 </th>
                 <th>
-                    Ho va dem
+                    Ho va ten dem
                 </th>
                 <th>
                     Email
                 </th>
-                <th>
-                    Avatar
-                </th>
                 <th>Xử lý</th>
             </tr>
-            <tr th:each="hocsinhs : ${hocsinh}">
-                <td th:text="${hocsinhs.id}"></td>
-                <td th:text="${hocsinhs.ten}"></td>
-                <td th:text="${hocsinhs.hoVaDem}"></td>
-                <td th:text="${hocsinhs.email}"></td>
-                <td th:text="${hocsinhs.avatar}"></td>
+            <tr th:each="giaoViens : ${giaoVien}">
+                <td th:text="${giaoViens.id}"></td>
+                <td th:text="${giaoViens.ten}"></td>
+                <td th:text="${giaoViens.hoVaTenDem}"></td>
+                <td th:text="${giaoViens.email}"></td>
                 <td>
-
-                    <a th:href ="@{/hocSinh/update/{id}(id=${hocsinhs.id})}" class="btn btn-info btn-sm">Chỉnh sửa</a>
-                    <a th:href ="@{/hocSinh/delete/{id}(id=${hocsinhs.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn xoá sinh viên này không?');">Xoá</a>
+                    <a th:href ="@{/giaoVien/update/{id}(id=${giaoViens.id})}">Chỉnh sửa</a>
+                    <a th:href ="@{/giaoVien/delete/{id}(id=${giaoViens.id})}" onclick="return confirm('Bạn có chắc chắn xoá sinh viên này không?');">Xoá</a>
                 </td>
-
-
             </tr>
+
         </table>
     </div>
 </div>

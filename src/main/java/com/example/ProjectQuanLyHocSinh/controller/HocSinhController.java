@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -42,21 +43,21 @@ public class HocSinhController {
         hocSinhService.save(hocSinh);
         return "redirect:/hocSinh/list";
     }
-    @GetMapping("list")
+    @GetMapping("/list")
     public String listAll(Model model){
         List<HocSinh> hocSinhs = hocSinhService.findAll();
         model.addAttribute("hocsinh", hocSinhs);
         return "/hocsinh/show";
     }
     // display image
-    @GetMapping("/display")
-    public ResponseEntity<byte[]> displayImage(@RequestParam("id") Integer id) throws IOException, SQLException
-    {
-        HocSinh hocSinh = hocSinhService.findById(id);
-        byte [] imageBytes = null;
-        imageBytes = hocSinh.getAvatar().getBytes(1,(int) hocSinh.getAvatar().length());
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
-    }
+//    @GetMapping("/display")
+//    public ResponseEntity<byte[]> displayImage(@RequestParam("id") Integer id) throws IOException, SQLException
+//    {
+//        HocSinh hocSinh = hocSinhService.findById(id);
+//        byte [] imageBytes = null;
+//        imageBytes = hocSinh.getAvatar().getBytes(1,(int) hocSinh.getAvatar().length());
+//        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+//    }
 
     @GetMapping("/update/{id}")
     public String update(@PathVariable(value = "id") Integer id, Model model){

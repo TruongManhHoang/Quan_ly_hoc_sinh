@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th= "http://www.thymeleaf.org" th:fragment= "layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm người dùng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--    <script>-->
+    <!--        document.addEventListener('DOMContentLoaded', function() {-->
+    <!--        document.addEventListener('DOMContentLoaded', function() {-->
+    <!--                document.querySelector('#form').onsubmit = function() {-->
+    <!--                    alert("Chúc mừng bạn đã cập nhật học sinh thành công!");-->
+    <!--                };-->
+    <!--            });-->
+    <!--    </script>-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('#submit').disabled = true;
+            document.querySelector('#check').onchange = function() {
+                if (this.checked) {
+                    document.querySelector('#submit').disabled = false;
+                } else {
+                    document.querySelector('#submit').disabled = true;
+                }
+            };
+
+
+<!--            document.querySelector('#form').onsubmit = function() {-->
+<!--            const ten = document.querySelector('#ten').value;-->
+<!--            const hoVaDem = document.querySelector('#hoVaDem').value;-->
+<!--            const email = document.querySelector('#email').value;-->
+<!--            if (ten === "" || hoVaDem === "" || email === "") {-->
+<!--                alert("Vui lòng điền đầy đủ thông tin và đồng ý lập tài khoản.");-->
+<!--                if (!checkEmail(email)) {-->
+<!--                    alert("Email không hợp lệ!");-->
+<!--                }-->
+<!--            }-->
+<!--            };-->
+            document.querySelector('#form').onsubmit = function(event) {
+                // Ngăn chặn hành vi mặc định của form khi gửi
+
+                const ten = document.querySelector('#ten').value.trim(); // Sử dụng trim để loại bỏ khoảng trắng thừa
+                const hoVaDem = document.querySelector('#hoVaDem').value.trim();
+                const email = document.querySelector('#email').value.trim();
+
+                // Kiểm tra xem các trường có được điền đầy đủ không
+                if (ten === "" || hoVaDem === "" || email === "") {
+                    alert("Vui lòng điền đầy đủ thông tin và đồng ý lập tài khoản.");
+                    return; // Ngừng thực thi nếu có một trường không được điền
+                }
+
+                // Kiểm tra hợp lệ của địa chỉ email
+                if (!checkEmail(email)) {
+                    alert("Email không hợp lệ!");
+                    return; // Ngừng thực thi nếu email không hợp lệ
+                }
+
+                // Nếu mọi thứ đều hợp lệ, bạn có thể tiếp tục xử lý form ở đây
+            };
+        });
+
+        function checkEmail(email) {
+            return /\S+@\S+\.\S+/.test(email);
+        }
+
+        function checkInfo() {
+            const ten = document.querySelector('#ten').value;
+            const hoVaDem = document.querySelector('#hoVaDem').value;
+            const email = document.querySelector('#email').value;
+
+
+            if (ten === "" || hoVaDem === "" || email === "") {
+                alert("Vui lòng điền đầy đủ thông tin và đồng ý lập tài khoản.");
+                if (!checkEmail(email)) {
+                    alert("Email không hợp lệ!");
+                }
+<!--                if (!checkPhoneNumber(phonenumber)) {-->
+<!--                    alert("Số điện thoại không hợp lệ. Vui lòng nhập đúng 10 chữ số.");-->
+<!--                }-->
+            }
+        }
+    </script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <h3>Thêm giáo viên</h3>
+    <hr/>
+    <form action="#" th:action="@{/giaoVien/saveGiaoVien}" th:object="${giaoVien}" method="post" id = "form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Tên: </label>
+            <input type="text" th:field="*{ten}" class="form-control" placeholder="Nhập tên">
+        </div>
+        <div class="form-group">
+            <label>Họ và đệm: </label>
+            <input type="text" th:field="*{hoVaTenDem}" class="form-control" placeholder="Nhập học và tên đệm">
+        </div>
+        <div class="form-group">
+            <label>Email: </label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="Nhập email">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
