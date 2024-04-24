@@ -8,26 +8,29 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
-public class HocSinhServiceImpl implements HocSinhService {
+public class hocSinhServiceImpl implements hocSinhService{
     private HocSinhRepository hocSinhRepository;
 
     @Autowired
-    public HocSinhServiceImpl(HocSinhRepository hocSinhRepository) {
+    public hocSinhServiceImpl(HocSinhRepository hocSinhRepository) {
         this.hocSinhRepository = hocSinhRepository;
     }
-
 
     @Transactional
     @Override
     public HocSinh save(HocSinh hocSinh) {
         return hocSinhRepository.saveAndFlush(hocSinh);
     }
-
+    @Transactional
     @Override
     public HocSinh update(HocSinh hocSinh) {
         return hocSinhRepository.saveAndFlush(hocSinh);
+    }
+
+    @Override
+    public List<HocSinh> findAll() {
+        return hocSinhRepository.findAll();
     }
 
     @Override
@@ -37,23 +40,13 @@ public class HocSinhServiceImpl implements HocSinhService {
         if(optional.isPresent()){
             hocSinh = optional.get();
         }else {
-            throw  new RuntimeException("Hoc sinh not found for id " + id);
+            throw new RuntimeException("Hoc sinh not found for id " + id);
         }
         return hocSinh;
     }
-//    @Override
-//    public HocSinh findByName(String name) {
-//        return hocSinhRepository.findByName(name);
-//    }
 
-    @Transactional
     @Override
     public void delete(Integer id) {
         hocSinhRepository.deleteById(id);
-    }
-
-    @Override
-    public List<HocSinh> findAll() {
-        return hocSinhRepository.findAll();
     }
 }

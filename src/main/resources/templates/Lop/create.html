@@ -182,13 +182,6 @@
         border-radius: 5px;
         border: 1px solid #ccc;
     }
-    input[type="email"] {
-        flex: 2; /* Đặt flex-grow của input để chiếm một phần của hàng */
-        padding: 10px;
-        width: 100%; /* Độ rộng của input */
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
 
 
     button[type="submit"] {
@@ -204,9 +197,6 @@
     button[type="submit"]:hover {
         background-color: #0080FF;
     }
-    #id{
-        margin-right: 375px;
-    }
 </style>
 
 <body>
@@ -220,26 +210,25 @@
         </ul>
     </div>
     <div class="right-panel">
-        <h3>Thêm học sinh</h3>
+        <h3>Thêm lớp</h3>
         <hr/>
-        <form action="#" th:action="@{/hocSinh/save}" th:object="${hocsinh}" method="post" id="form" enctype="multipart/form-data">
-            <div class="form-row">
-                <label><b>Id:</b></label><input readonly th:value = "${hocsinh.id}" id="id">
-                <input type="hidden" th:field="*{id}">
-            </div>
+        <form action="#" th:action="@{/lop/save}" th:object="${lop}" method="post" id="form" enctype="multipart/form-data">
             <div class="form-row">
                 <label for="ten"><b>Tên lớp:</b></label>
-                <input type="text" th:field="*{ten}" placeholder="Nhập tên" id="ten">
+                <input type="text" th:field="*{tenLop}" placeholder="Nhập tên lớp" id="ten">
             </div>
             <div class="form-row">
-                <label for="hoDem"><b>Khối học:</b></label>
-                <input type="text" th:field="*{hoVaDem}" placeholder="Nhập họ và đệm" id="hoDem">
+                <label for="khoiHoc"><b>Khối học:</b></label>
+                <input type="text" th:field="*{khoiHoc}" placeholder="Nhập khối học" id="khoiHoc">
             </div>
             <div class="form-row">
-                <label for="email"><b>Khối học:</b></label>
-                <input type="text" th:field="*{email}" placeholder="Nhập email" id="email">
+                <label for="nienKhoa"><b>Niên khóa:</b></label>
+                <input type="text" th:field="*{nienKhoa}" placeholder="Nhập niên khóa" id="nienKhoa">
             </div>
-
+            <div class="form-row">
+                <label for="giaoVienChuNhiem"><b>Giáo viên chủ nhiệm:</b></label>
+                <input type="text" th:field="*{giaoVienChuNhiem}" placeholder="Nhập giáo viên chủ nhiệm" id="giaoVienChuNhiem">
+            </div>
             <button type="submit" id="submit">Lưu</button>
         </form>
 

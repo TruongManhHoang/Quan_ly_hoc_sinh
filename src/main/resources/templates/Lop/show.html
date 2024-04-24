@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý nhân sự</title>
-    <title>Quản lý nhân sự</title>
+    <title>Quản lý lớp</title>
     <style>
         /* CSS giữ nguyên */
         body {
@@ -89,39 +88,45 @@
         <ul class="nav">
             <li><a href="/hocSinh/list" data-url="/hocSinh/list">Học sinh</a></li>
             <li><a href="/giaoVien/list" data-url="/giaoVien/list">Giáo viên</a></li>
-            <li><a href="/lop/list" data-url="/lop/list">Lớp học</a></li>
+            <li><a href="/lop/list" data-url="/lopHoc/list">Lớp học</a></li>
         </ul>
     </div>
-    <div class="right-panel" id = "Content2">
-        <a th:href="@{/giaoVien/create}">Thêm mới</a>
+    <div class="right-panel">
+        <a th:href="@{/lop/create}">Thêm mới</a>
         <table>
-            <caption>Danh sách giáo viên</caption>
+            <caption>Danh sách học sinh</caption>
             <tr>
                 <th>
                     ID
                 </th>
                 <th>
-                    Ten
+                    tenLop
                 </th>
                 <th>
-                    Ho va ten dem
+                    khoiHoc
                 </th>
                 <th>
-                    Email
+                    nienKhoa
+                </th>
+                <th>
+                    giaoVienChuNhiem
                 </th>
                 <th>Xử lý</th>
             </tr>
-            <tr th:each="giaoViens : ${giaoVien}">
-                <td th:text="${giaoViens.id}"></td>
-                <td th:text="${giaoViens.ten}"></td>
-                <td th:text="${giaoViens.hoVaTenDem}"></td>
-                <td th:text="${giaoViens.email}"></td>
+            <tr th:each="lops : ${lop}">
+                <td th:text="${lops.id}"></td>
+                <td th:text="${lops.tenLop}"></td>
+                <td th:text="${lops.khoiHoc}"></td>
+                <td th:text="${lops.nienKhoa}"></td>
+                <td th:text="${lops.giaoVienChuNhiem}"></td>
                 <td>
-                    <a th:href ="@{/giaoVien/update/{id}(id=${giaoViens.id})}">Chỉnh sửa</a>
-                    <a th:href ="@{/giaoVien/delete/{id}(id=${giaoViens.id})}" onclick="return confirm('Bạn có chắc chắn xoá sinh viên này không?');">Xoá</a>
-                </td>
-            </tr>
 
+                    <a th:href ="@{/lop/update/{id}(id=${lops.id})}" class="btn btn-info btn-sm">Chỉnh sửa</a>
+                    <a th:href ="@{/lop/delete/{id}(id=${lops.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn xoá sinh viên này không?');">Xoá</a>
+                </td>
+
+
+            </tr>
         </table>
     </div>
 </div>
