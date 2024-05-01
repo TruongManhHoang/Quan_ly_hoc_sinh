@@ -164,6 +164,12 @@ public class HocSinh {
         this.phuHuynh = phuHuynh;
     }
 
+    @Transient
+    public String getAvatarImagePath(){
+        if(avatar == null || id == null) return null;
+        return "/hocSinh_avatar/" + id + "/" + avatar;
+    }
+
     @Override
     public String toString() {
         return "HocSinh{" +

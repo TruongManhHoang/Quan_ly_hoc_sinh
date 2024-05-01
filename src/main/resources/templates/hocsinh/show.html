@@ -2,86 +2,214 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý nhân sự</title>
-    <title>Quản lý nhân sự</title>
-    <style>
-        /* CSS giữ nguyên */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .main_content {
-            display: flex;
-            height: 100vh;
-        }
-
-        .left-panel {
-            flex-basis: 15%; /* Chiếm 15% chiều rộng màn hình */
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            position: fixed;
-            width: 16%;
-            height: 100vh;
-            overflow-y: auto;
-        }
-
-        .right-panel {
-            flex-basis: 86%; /* Chiếm 85% chiều rộng màn hình */
-            overflow-y: auto; /* Cho phép cuộn nội dung bên trong nếu quá dài */
-            margin-left: 18.5%;
-        }
-
-        .nav {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav li {
-            padding: 10px;
-        }
-
-        .nav li a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            height: 32px;
-            padding: 5px;
-        }
-
-        .nav li a:hover {
-            background-color: #555;
-            color: aliceblue;
-        }
-        table {
-            width: 100%;
-            height: 50%
-        }
-        th {
-            height: 15%
-        }
-        table, th, td{
-            border:1px solid #868585;
-        }
-        table{
-            border-collapse:collapse;
-        }
-        table tr:nth-child(odd){
-            background-color:#eee;
-        }
-        table tr:nth-child(even){
-            background-color:white;
-        }
-        table tr:nth-child(1){
-            background-color:skyblue;
-        }
-    </style>
+    <title>Title</title>
 </head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+
+<!--            document.querySelector('#form').onsubmit = function() {-->
+<!--            const ten = document.querySelector('#ten').value;-->
+<!--            const hoVaDem = document.querySelector('#hoVaDem').value;-->
+<!--            const email = document.querySelector('#email').value;-->
+<!--            if (ten === "" || hoVaDem === "" || email === "") {-->
+<!--                alert("Vui lòng điền đầy đủ thông tin và đồng ý lập tài khoản.");-->
+<!--                if (!checkEmail(email)) {-->
+<!--                    alert("Email không hợp lệ!");-->
+<!--                }-->
+<!--            }-->
+<!--            };-->
+        document.querySelector('#form').onsubmit = function(event) {
+            // Ngăn chặn hành vi mặc định của form khi gửi
+
+            const ten = document.querySelector('#ten').value.trim(); // Sử dụng trim để loại bỏ khoảng trắng thừa
+            const hoVaDem = document.querySelector('#hoVaDem').value.trim();
+            const email = document.querySelector('#email').value.trim();
+
+            // Kiểm tra xem các trường có được điền đầy đủ không
+            if (ten === "" || hoVaDem === "" || email === "") {
+                alert("Vui lòng điền đầy đủ thông tin và đồng ý lập tài khoản.");
+                return; // Ngừng thực thi nếu có một trường không được điền
+            }
+
+            // Kiểm tra hợp lệ của địa chỉ email
+            if (!checkEmail(email)) {
+                alert("Email không hợp lệ!");
+                return; // Ngừng thực thi nếu email không hợp lệ
+            }
+
+            // Nếu mọi thứ đều hợp lệ, bạn có thể tiếp tục xử lý form ở đây
+        };
+    });
+
+    function checkEmail(email) {
+        return /\S+@\S+\.\S+/.test(email);
+    }
+
+    function checkInfo() {
+        const ten = document.querySelector('#ten').value;
+        const hoVaDem = document.querySelector('#hoVaDem').value;
+        const email = document.querySelector('#email').value;
+
+
+        if (ten === "" || hoVaDem === "" || email === "") {
+            alert("Vui lòng điền đầy đủ thông tin và đồng ý lập tài khoản.");
+            if (!checkEmail(email)) {
+                alert("Email không hợp lệ!");
+            }
+<!--                if (!checkPhoneNumber(phonenumber)) {-->
+<!--                    alert("Số điện thoại không hợp lệ. Vui lòng nhập đúng 10 chữ số.");-->
+<!--                }-->
+        }
+    }
+</script>
+<style>
+    /* CSS giữ nguyên */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .main_content {
+        display: flex;
+        height: 100vh;
+    }
+
+    .left-panel {
+        flex-basis: 15%; /* Chiếm 15% chiều rộng màn hình */
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        position: fixed;
+        width: 16%;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .right-panel {
+        flex-basis: 86%; /* Chiếm 85% chiều rộng màn hình */
+        overflow-y: auto; /* Cho phép cuộn nội dung bên trong nếu quá dài */
+        margin-left: 18%;
+        margin-top: 9%;
+        padding: 20px;
+    }
+
+    .nav {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav li {
+        padding: 10px;
+    }
+
+    .nav li a {
+        color: #ccc;
+        text-decoration: none;
+        display: block;
+        height: 32px;
+        padding: 5px;
+    }
+
+    .nav li a:hover {
+        background-color: #555;
+        color: aliceblue;
+    }
+
+    table {
+        width: 100%;
+        height: 50%;
+    }
+
+    th {
+        height: 15%;
+    }
+
+    table, th, td {
+        border: 1px solid #868585;
+        border-collapse: collapse;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+
+    #form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        max-width: 55%; /* Độ rộng tối đa của form */
+        margin: 0 auto; /* Canh giữa form */
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 130px;
+    }
+
+
+    .form-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 40px; /* Khoảng cách giữa các hàng */
+        width: 100%; /* Độ rộng của hàng */
+    }
+
+
+    label {
+        flex: 1; /* Đặt flex-grow của label để chiếm phần còn lại của hàng */
+        margin-right: 20px; /* Khoảng cách giữa label và input */
+        text-align: right; /* Canh phải label */
+    }
+
+
+    input[type="text"] {
+        flex: 2; /* Đặt flex-grow của input để chiếm một phần của hàng */
+        padding: 10px;
+        width: 100%; /* Độ rộng của input */
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+
+    button[type="submit"] {
+        width: 30%;
+        padding: 10px;
+        background-color: #00BFFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0080FF;
+    }
+    img{
+            width: 120px;
+            display: flex;
+            margin: auto;
+    }
+
+    .a {
+        display: flex;
+        margin: auto;
+    }
+</style>
+
 <body>
 <div class="main_content" id="mainContent">
     <div class="left-panel">
@@ -89,13 +217,13 @@
         <ul class="nav">
             <li><a href="/hocSinh/list" data-url="/hocSinh/list">Học sinh</a></li>
             <li><a href="/giaoVien/list" data-url="/giaoVien/list">Giáo viên</a></li>
-            <li><a href="/lop/list" data-url="/lop/list">Lớp học</a></li>
+            <li><a href="/lop/list" data-url="/lopHoc/list">Lớp học</a></li>
         </ul>
     </div>
     <div class="right-panel">
-        <a th:href="@{/hocSinh/create}">Thêm mới</a>
+        <a th:href="@{/hocSinh/create}" class="btn btn-info btn-sm">Thêm mới</a>
         <table>
-            <caption>Danh sách học sinh</caption>
+            <caption><b>Danh sách học sinh</b></caption>
             <tr>
                 <th>
                     ID
@@ -119,18 +247,16 @@
                 <td th:text="${hocsinhs.ten}"></td>
                 <td th:text="${hocsinhs.hoVaDem}"></td>
                 <td th:text="${hocsinhs.email}"></td>
-                <td th:text="${hocsinhs.avatar}"></td>
+                <td><img th:src="@{${hocsinhs.getAvatarImagePath}}" /></td>
+                <!--                <td th:text="$${hocsinhs.createAt.toString().substring(0, 10)}"></td>-->
                 <td>
-
-                    <a th:href ="@{/hocSinh/update/{id}(id=${hocsinhs.id})}" class="btn btn-info btn-sm">Chỉnh sửa</a>
-                    <a th:href ="@{/hocSinh/delete/{id}(id=${hocsinhs.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn xoá sinh viên này không?');">Xoá</a>
+                    <a th:href ="@{/hocSinh/update/{id}(id=${hocsinhs.id})}" class="">Chỉnh sửa</a>
+                    <a th:href ="@{/hocSinh/delete/{id}(id=${hocsinhs.id})}" class="" onclick="return confirm('Bạn có chắc chắn xoá sinh viên này không?');">Xoá</a>
                 </td>
-
-
             </tr>
         </table>
+
     </div>
 </div>
-
 </body>
 </html>

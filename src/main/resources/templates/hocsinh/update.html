@@ -204,9 +204,11 @@
     button[type="submit"]:hover {
         background-color: #0080FF;
     }
-    #id{
-        margin-right: 375px;
-    }
+    img {
+            display: block; /* Để loại bỏ khoảng trắng dư thừa ở dưới hình ảnh */
+            margin: auto; /* Căn giữa theo chiều ngang */
+            width: 100px
+        }
 </style>
 
 <body>
@@ -220,26 +222,30 @@
         </ul>
     </div>
     <div class="right-panel">
-        <h3>Thêm học sinh</h3>
+        <h3>Sửa học sinh</h3>
         <hr/>
-        <form action="#" th:action="@{/hocSinh/save}" th:object="${hocsinh}" method="post" id="form" enctype="multipart/form-data">
+        <form action="#" th:action="@{/hocSinh/update}" th:object="${hocsinh}" method="post" id="form" enctype="multipart/form-data">
             <div class="form-row">
                 <label><b>Id:</b></label><input readonly th:value = "${hocsinh.id}" id="id">
                 <input type="hidden" th:field="*{id}">
             </div>
             <div class="form-row">
-                <label for="ten"><b>Tên lớp:</b></label>
+                <label for="ten"><b>Tên học sinh:</b></label>
                 <input type="text" th:field="*{ten}" placeholder="Nhập tên" id="ten">
             </div>
             <div class="form-row">
-                <label for="hoDem"><b>Khối học:</b></label>
+                <label for="hoDem"><b>Họ và đệm</b></label>
                 <input type="text" th:field="*{hoVaDem}" placeholder="Nhập họ và đệm" id="hoDem">
             </div>
             <div class="form-row">
-                <label for="email"><b>Khối học:</b></label>
-                <input type="text" th:field="*{email}" placeholder="Nhập email" id="email">
+                <label for="email"><b>Email:</b></label>
+                <input type="email" th:field="*{email}" placeholder="Nhập email" id="email">
             </div>
-
+            <img th:src="@{${hocsinh.getAvatarImagePath}}" />
+            <div class="form-row">
+                <label for="fileImage"><b>Avatar:</b></label>
+                <input type="file" name="fileImage" accept="image/png, image/jpeg" id="fileImage">
+            </div>
             <button type="submit" id="submit">Lưu</button>
         </form>
 

@@ -1,0 +1,77 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main_content {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-panel {
+            flex-basis: 15%; /* Chiếm 15% chiều rộng màn hình */
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 16%;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .right-panel {
+            flex-basis: 86%; /* Chiếm 85% chiều rộng màn hình */
+            overflow-y: auto; /* Cho phép cuộn nội dung bên trong nếu quá dài */
+            margin-left: 18.5%;
+        }
+
+        .nav {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav li {
+            padding: 10px;
+        }
+
+        .nav li a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            height: 32px;
+            padding: 5px;
+        }
+
+        .nav li a:hover {
+            background-color: #555;
+            color: aliceblue;
+        }
+        table {
+            width: 100%;
+            height: 50%
+        }
+        th {
+            height: 15%
+        }
+        table, th, td{
+            border:1px solid #868585;
+        }
+        table{
+            border-collapse:collapse;
+        }
+        table tr:nth-child(odd){
+            background-color:#eee;
+        }
+        table tr:nth-child(even){
+            background-color:white;
+        }
+        table tr:nth-child(1){
+            background-color:skyblue;
+        }
+        td img {
+            display: block; /* Để loại bỏ khoảng trắng dư thừa ở dưới hình ảnh */
+            margin: auto; /* Căn giữa theo chiều ngang */
+            width: 100px
+        }

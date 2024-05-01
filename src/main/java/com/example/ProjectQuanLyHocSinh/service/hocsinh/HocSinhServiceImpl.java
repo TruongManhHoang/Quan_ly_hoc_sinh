@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class hocSinhServiceImpl implements hocSinhService{
+public class HocSinhServiceImpl implements HocSinhService {
     private HocSinhRepository hocSinhRepository;
 
     @Autowired
-    public hocSinhServiceImpl(HocSinhRepository hocSinhRepository) {
+    public HocSinhServiceImpl(HocSinhRepository hocSinhRepository) {
         this.hocSinhRepository = hocSinhRepository;
     }
 

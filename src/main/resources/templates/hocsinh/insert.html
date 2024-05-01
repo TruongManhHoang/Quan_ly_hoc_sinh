@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
@@ -61,6 +62,22 @@
 <!--                    alert("Số điện thoại không hợp lệ. Vui lòng nhập đúng 10 chữ số.");-->
 <!--                }-->
         }
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#fileImage').change(function(){
+            showImageThumbnail(this);
+        });
+    });
+    function showImageThumbnail(fileInput){
+        file = fileInput.files[0];
+        reader = new FileReader();
+
+        reader.onload = function(e){
+            $('ava').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(file);
     }
 </script>
 <style>
@@ -221,22 +238,26 @@
         <hr/>
         <form action="#" th:action="@{/hocSinh/save}" th:object="${hocsinh}" method="post" id="form" enctype="multipart/form-data">
             <div class="form-row">
-                <label for="ten"><b>Tên lớp:</b></label>
+                <label for="ten"><b>Tên học sinh:</b></label>
                 <input type="text" th:field="*{ten}" placeholder="Nhập tên" id="ten">
             </div>
             <div class="form-row">
-                <label for="hoDem"><b>Khối học:</b></label>
+                <label for="hoDem"><b>Họ và đệm:</b></label>
                 <input type="text" th:field="*{hoVaDem}" placeholder="Nhập họ và đệm" id="hoDem">
             </div>
             <div class="form-row">
-                <label for="email"><b>Khối học:</b></label>
-                <input type="text" th:field="*{email}" placeholder="Nhập email" id="email">
+                <label for="email"><b>Email:</b></label>
+                <input type="email" th:field="*{email}" placeholder="Nhập email" id="email">
             </div>
-
+            <div class="form-row">
+                <label for="fileImage"><b>Avatar:</b></label>
+                <input type="file" name="fileImage" accept="image/png, image/jpeg" id="fileImage">
+            </div>
             <button type="submit" id="submit">Lưu</button>
         </form>
 
     </div>
 </div>
+
 </body>
 </html>
